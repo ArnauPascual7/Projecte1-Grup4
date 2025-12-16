@@ -3,6 +3,6 @@
 
 ## Controls
 
-Clicar en els botonscanvia el personatge i el botó '?' canvia a un personatge aleatori.
+Clicar en els botons canvia el personatge i el botó '?' canvia a un personatge aleatori.
 
 En arrosegar el ratolí per sobre del personatge es pot rotar.
