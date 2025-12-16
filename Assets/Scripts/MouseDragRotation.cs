@@ -12,24 +12,18 @@ public class MouseDragRotation : MonoBehaviour
 
     private void Awake()
     {
-        // Crear les accions programàticament
         playerInput = gameObject.AddComponent<PlayerInput>();
 
-        // Crear un Input Action Map
         var actionMap = new InputActionMap("MouseDrag");
 
-        // Acció per detectar quan es manté premut el botó del mouse
         dragAction = actionMap.AddAction("Drag", InputActionType.Button);
         dragAction.AddBinding("<Mouse>/leftButton");
 
-        // Acció per obtenir el delta del moviment del mouse
         deltaAction = actionMap.AddAction("Delta", InputActionType.Value);
         deltaAction.AddBinding("<Mouse>/delta");
 
-        // Activar el mapa d'accions
         actionMap.Enable();
 
-        // Subscriure's als events
         dragAction.started += ctx => isDragging = true;
         dragAction.canceled += ctx => isDragging = false;
     }
@@ -38,17 +32,27 @@ public class MouseDragRotation : MonoBehaviour
     {
         if (isDragging)
         {
-            // Llegir el delta del moviment del mouse
             Vector2 delta = deltaAction.ReadValue<Vector2>();
 
-            // Rotar l'objecte en l'eix Y (horitzontal) basant-se en el moviment X del mouse
             transform.Rotate(0, -delta.x * rotationSpeed, 0, Space.World);
         }
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        // Netejar les subscripcions
+        if (dragAction != null)
+        {
+            dragAction.Enable();
+        }
+
+        if (deltaAction != null)
+        {
+            deltaAction.Enable();
+        }
+    }
+
+    private void OnDisable()
+    {
         if (dragAction != null)
         {
             dragAction.Disable();
