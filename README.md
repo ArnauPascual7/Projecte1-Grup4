@@ -4,4 +4,5 @@
 ## Controls
 
 Clicar en els botonscanvia el personatge i el botó '?' canvia a un personatge aleatori.
+
 En arrosegar el ratolí per sobre del personatge es pot rotar.
