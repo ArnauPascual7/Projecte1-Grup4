@@ -8,3 +8,7 @@
 Clicar en els botons canvia el personatge i el botó '?' canvia a un personatge aleatori.
 
 En arrosegar el ratolí per sobre del personatge es pot rotar.
+
+## Build
+
+La build es troba a [ProjectBuild.zip](ProjectBuild.zip), ja que no s'ha pogut pujar si no es comprimia.
