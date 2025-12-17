@@ -9,6 +9,7 @@ public class MouseDragRotation : MonoBehaviour
     private InputAction dragAction;
     private InputAction deltaAction;
     private bool isDragging = false;
+    private Quaternion initialRotation;
 
     private void Awake()
     {
@@ -26,6 +27,8 @@ public class MouseDragRotation : MonoBehaviour
 
         dragAction.started += ctx => isDragging = true;
         dragAction.canceled += ctx => isDragging = false;
+
+        initialRotation = transform.rotation;
     }
 
     private void Update()
@@ -40,6 +43,8 @@ public class MouseDragRotation : MonoBehaviour
 
     private void OnEnable()
     {
+        transform.rotation = initialRotation;
+
         if (dragAction != null)
         {
             dragAction.Enable();
